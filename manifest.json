@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "r/Dota2 Auto Filter",
+  "description": "This extension automatically filters the contents of Dota2 subreddit r/Dota2 to display only esports related threads, using its own content filter on the subreddit's sidebar",
+  "version": "0.01",
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+
+  "page_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+      {
+        "matches":[
+          "*://*.reddit.com/r/DotA2/*",
+          "*://*.reddit.com/r/DotA2/new/*",
+          "*://*.reddit.com/r/DotA2/rising/*",
+          "*://*.reddit.com/r/DotA2/controversial/*",
+          "*://*.reddit.com/r/DotA2/top/*",
+          "*://*.reddit.com/r/DotA2/gilded/*",
+          "*://*.reddit.com/r/DotA2/wiki/*"
+        ],
+        "exclude_matches":["*://oe.reddit.com/r/DotA2/*"],
+        "js": ["content.js"]
+      }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "*://*.reddit.com/r/DotA2/"
+  ]
+}
